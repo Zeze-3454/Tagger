@@ -74,11 +74,11 @@ async def info(event):
   await event.reply("**Merhaba Benim Ve Sahibim Hakkında Bilgi\n\nPython: 3.8.2\nKütüphanem: Telethon\n\nSahibim:  Gruplarınızda Üyeleri Etiketlemek için Yaratılmışım**",
                     buttons=(
                       [
-                       Button.url('Beni Grubuna Ekle ➕', 'https://t.me/Startaggerbot?startgroup=a')
+                       Button.url('Beni Grubuna Ekle ➕', 'https://t.me/zezetagbot?startgroup=a')
                       ],
                       [
-                       Button.url('📢 Kanal', 'https://t.me/StarBotKanal'),
-                       Button.url('🇹🇷 Sahibim', 'https://t.me/Hayiboo')
+                       Button.url('📢 Kanal', 'https://t.me/safkalbim'),
+                       Button.url('🇹🇷 Sahibim', 'https://t.me/mizantropistsahip')
                       ],
                       [
                        Button.url('🧑🏻‍💻 ɢɪᴛʜᴜʙ ᴋᴀʏɴᴀᴋ ᴋᴏᴅᴜ 🧑🏻‍💻', 'https://github.com/MehmetAtes21/Tagger')
@@ -106,11 +106,11 @@ async def start(event):
                        Button.inline("Komutlar", data="komutlar")
                       ],
                       [
-                       Button.url('Beni Grubuna Ekle', 'https://t.me/StartaggerBot?startgroup=a'),
-                       Button.url('Kanal', 'https://t.me/StarBotKanal')
+                       Button.url('Beni Grubuna Ekle', 'https://t.me/zezetagbot?startgroup=a'),
+                       Button.url('Kanal', 'https://t.me/safkalbim')
                       ],
                       [
-                       Button.url('Sahibim', 'https://t.me/Hayiboo')
+                       Button.url('Sahibim', 'https://t.me/mizantropistsahip')
                       ],
                     ),
                     link_preview=False)
@@ -124,16 +124,16 @@ async def start(event):
 async def handler(event):
     async for usr in client.iter_participants(event.chat_id):
      ad = f"[{usr.first_name}](tg://user?id={usr.id}) "
-     await event.edit(f"**Merhaba Ben @MinaTagBot\nGrubunuzdakı Üyeleri Etiketleye Bilirim\nKomutlar için Komutlar Düğmesine Tıklaya Bilirsiz**", buttons=(
+     await event.edit(f"**Merhaba Ben @zezetagbot\nGrubunuzdakı Üyeleri Etiketleye Bilirim\nKomutlar için Komutlar Düğmesine Tıklaya Bilirsiz**", buttons=(
                       [
                        Button.inline("Komutlar", data="komutlar")
                       ],
                       [
-                       Button.url('Beni Grubuna Ekle', 'https://t.me/StartaggerBot?startgroup=a'),
-                       Button.url('Kanal', 'https://t.me/StarBotKanal')
+                       Button.url('Beni Grubuna Ekle', 'https://t.me/zezetagbot?startgroup=a'),
+                       Button.url('Kanal', 'https://t.me/safkalkim')
                       ],
                       [
-                       Button.url('Sahibim', 'https://t.me/Hayiboo')
+                       Button.url('Sahibim', 'https://t.me/mizantropistsahip')
                       ],
                     ),
                     link_preview=False)
@@ -141,7 +141,7 @@ async def handler(event):
 # gece kusu
 @client.on(events.callbackquery.CallbackQuery(data="komutlar"))
 async def handler(event):
-    await event.edit(f"**Komutlarım:\n\n/all -text-\n/atag -text-\n/cancel - İşlemi Durdururum...\n\n❕ Yalnızca yöneticileri bu komutları kullanabilir.**", buttons=(
+    await event.edit(f"**Komutlarım:\n\n/utag -text-\n/atag -text-\n/cancel - İşlemi Durdururum...\n\n❕ Yalnızca yöneticileri bu komutları kullanabilir.**", buttons=(
                       [
                       Button.inline("◀️ Geri", data="start")
                       ]
@@ -158,7 +158,7 @@ async def mentionalladmin(event):
     else:
       etiketuye.append(event.chat_id)
 
-@client.on(events.NewMessage(pattern="^/all ?(.*)"))
+@client.on(events.NewMessage(pattern="^/utag ?(.*)"))
 async def mentionall(event):
   global anlik_calisan
   rxyzdev_tagTot[event.chat_id] = 0
@@ -193,10 +193,10 @@ async def mentionall(event):
     async for usr in client.iter_participants(event.chat_id, aggressive=False):
       rxyzdev_tagTot[event.chat_id] += 1
       usrnum += 1
-      usrtxt += f"\n👤 - [{usr.first_name}](tg://user?id={usr.id}) "
+      usrtxt += f"\n😌 - [{usr.first_name}](tg://user?id={usr.id}) "
       if event.chat_id not in anlik_calisan:
         return
-      if usrnum == 5:
+      if usrnum == 1:
         await client.send_message(event.chat_id, f"{msg}\n{usrtxt}")
         await asyncio.sleep(3)
         usrnum = 0
@@ -204,7 +204,7 @@ async def mentionall(event):
         
     sender = await event.get_sender()
     rxyzdev_initT = f"[{sender.first_name}](tg://user?id={sender.id})"
-    if event.chat_id in rxyzdev_tagTot:await event.respond(f"**✅ Etiket İşlemi Başarıyla Tamamlandı !.\n\nEtiketlerin Sayları: {rxyzdev_tagTot[event.chat_id]}\n\nEtiket İşlemini Başlatan: {rxyzdev_initT}**")
+    if event.chat_id in rxyzdev_tagTot:await event.respond(f"**✅ Etiket İşlemi Başarıyla Tamamlandı !.\n\nEtiketlerin Sayıları: {rxyzdev_tagTot[event.chat_id]}\n\nEtiket İşlemini Başlatan: {rxyzdev_initT}**")
   
   if mode == "text_on_reply":
     anlik_calisan.append(event.chat_id)
@@ -214,10 +214,10 @@ async def mentionall(event):
     async for usr in client.iter_participants(event.chat_id, aggressive=False):
       rxyzdev_tagTot[event.chat_id] += 1
       usrnum += 1
-      usrtxt += f"\n👤 - [{usr.first_name}](tg://user?id={usr.id}) "
+      usrtxt += f"\n😌 - [{usr.first_name}](tg://user?id={usr.id}) "
       if event.chat_id not in anlik_calisan:
         return
-      if usrnum == 5:
+      if usrnum == 1:
         await client.send_message(event.chat_id, usrtxt, reply_to=msg)
         await asyncio.sleep(2)
         usrnum = 0
@@ -260,11 +260,11 @@ async def mentionalladmin(event):
   
     async for usr in client.iter_participants(event.chat_id,filter=ChannelParticipantsAdmins):
       usrnum += 1
-      usrtxt += f"\n**👤 - [{usr.first_name}](tg://user?id={usr.id}) **"
+      usrtxt += f"\n👩‍✈️ - [{usr.first_name}](tg://user?id={usr.id}) "
       if event.chat_id not in anlik_calisan:
         await event.respond("**Etiket İşlemi Bitti.!**")
         return
-      if usrnum == 5:
+      if usrnum == 1:
         await client.send_message(event.chat_id, f"{msg}\n\n{usrtxt}")
         await asyncio.sleep(3)
         usrnum = 0
@@ -278,11 +278,11 @@ async def mentionalladmin(event):
     usrtxt = ""
     async for usr in client.iter_participants(event.chat_id,filter=ChannelParticipantsAdmins):
       usrnum += 1
-      usrtxt += f"\n**👤 - [{usr.first_name}](tg://user?id={usr.id}) **"
+      usrtxt += f"\n👩‍✈️ - [{usr.first_name}](tg://user?id={usr.id}) "
       if event.chat_id not in anlik_calisan:
         await event.respond("**İşlem Durduruldu.!**")
         return
-      if usrnum == 5:
+      if usrnum == 1:
         await client.send_message(event.chat_id, usrtxt, reply_to=msg)
         await asyncio.sleep(3)
         usrnum = 0
